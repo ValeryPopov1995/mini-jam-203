@@ -70,7 +70,7 @@ namespace MiniJam203.HandView
                 hand.Fill = _fill;
         }
 
-        private async UniTask Anim(string animation)
+        public async UniTask Anim(string animation)
         {
             HideHands();
             var data = _animDatas.First(data => data.AnimName == animation);
@@ -96,6 +96,8 @@ namespace MiniJam203.HandView
 
 #if UNITY_EDITOR
         [Button] private void TestPickCan() => _ = Pick("can", Color.blue, .5f);
+        [SerializeField] private string _testAnim = "menu drop";
+        [Button] private void TestAnim() => _ = Anim(_testAnim);
 #endif
     }
 }
