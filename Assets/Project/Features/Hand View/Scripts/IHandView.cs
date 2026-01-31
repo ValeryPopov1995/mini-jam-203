@@ -5,7 +5,7 @@ namespace MiniJam203.HandView
 {
     public interface IHandView
     {
-        UniTask GetCan(Color color);
+        UniTask PickCan(Color color);
         UniTask DropCan();
     }
 }
