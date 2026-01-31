@@ -4,13 +4,7 @@ using UnityEngine;
 
 namespace MiniJam203.Player
 {
-    // Интерфейс, который должен реализовывать любой объект, получающий урон.
-    public interface IDamagable
-    {
-        void TakeDamage(float damage, GameObject attacker);
-    }
-
-    public class PlayerHealth : MonoBehaviour, IDamagable
+    public class PlayerHealth : MonoBehaviour, IDamageable
     {
         [Header("Health")]
         [SerializeField] private float maxHealth = 100f;
@@ -32,7 +26,7 @@ namespace MiniJam203.Player
             OnHealthChanged?.Invoke(currentHealth);
         }
 
-        // Реализация интерфейса
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public void TakeDamage(float damage, GameObject attacker)
         {
             if (isDead) return;
@@ -69,7 +63,7 @@ namespace MiniJam203.Player
             if (isDead) return;
             isDead = true;
 
-            // Можно добавить отключение управления, проигрывание анимации и т.д.
+            // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ.пїЅ.
             Debug.Log($"{gameObject.name} died. Killer: {(attacker != null ? attacker.name : "Unknown")}");
 
             OnDied?.Invoke(attacker);

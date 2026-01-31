@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    float hp;
+    public float hp;
     public bool IsDead { get; private set; }
     EnemyConfig config;
 
@@ -26,7 +26,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         }
         else
         {
-            // Здесь можно добавить реакции на урон: вспышка, звук, агро и т.д.
+            // Р—РґРµСЃСЊ РјРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ СЂРµР°РєС†РёРё РЅР° СѓСЂРѕРЅ: РІСЃРїС‹С€РєР°, Р·РІСѓРє, Р°РіСЂРѕ Рё С‚.Рґ.
         }
     }
 
