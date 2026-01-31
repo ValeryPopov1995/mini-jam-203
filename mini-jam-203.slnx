@@ -1,62 +1,62 @@
-﻿<Solution>
-  <Project Path="Unity.Timeline.csproj" />
-  <Project Path="Unity.RenderPipelines.GPUDriven.Runtime.csproj" />
-  <Project Path="Unity.ShaderGraph.Editor.csproj" />
-  <Project Path="Unity.RenderPipelines.Core.Runtime.csproj" />
-  <Project Path="NaughtyAttributes.Test.csproj" />
-  <Project Path="Unity.Mathematics.csproj" />
-  <Project Path="Unity.Timeline.Editor.csproj" />
-  <Project Path="Unity.RenderPipelines.Core.Editor.csproj" />
-  <Project Path="Unity.Collections.csproj" />
-  <Project Path="UnityEngine.UI.csproj" />
-  <Project Path="Unity.RenderPipelines.Universal.2D.Runtime.csproj" />
-  <Project Path="NaughtyAttributes.Core.csproj" />
-  <Project Path="Unity.RenderPipelines.Universal.Editor.csproj" />
-  <Project Path="Unity.PerformanceTesting.Editor.csproj" />
-  <Project Path="UnityEngine.TestRunner.csproj" />
-  <Project Path="Unity.2D.Tilemap.Editor.csproj" />
-  <Project Path="Unity.Burst.csproj" />
-  <Project Path="Unity.VisualStudio.Editor.csproj" />
-  <Project Path="Unity.InputSystem.csproj" />
-  <Project Path="PPv2URPConverters.csproj" />
-  <Project Path="UniTask.csproj" />
-  <Project Path="Unity.Searcher.Editor.csproj" />
-  <Project Path="UnityEditor.TestRunner.csproj" />
-  <Project Path="Unity.RenderPipelines.Universal.Runtime.csproj" />
-  <Project Path="NaughtyAttributes.Editor.csproj" />
-  <Project Path="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
-  <Project Path="Unity.Burst.CodeGen.csproj" />
-  <Project Path="Unity.PerformanceTesting.csproj" />
-  <Project Path="Unity.TextMeshPro.csproj" />
-  <Project Path="UniTask.Linq.csproj" />
-  <Project Path="Unity.TextMeshPro.Editor.csproj" />
-  <Project Path="Unity.Rendering.LightTransport.Runtime.csproj" />
-  <Project Path="Unity.Burst.Editor.csproj" />
-  <Project Path="Unity.Rider.Editor.csproj" />
-  <Project Path="Unity.AI.Navigation.Updater.csproj" />
-  <Project Path="UnityEditor.UI.csproj" />
-  <Project Path="Unity.2D.Sprite.Editor.csproj" />
-  <Project Path="Unity.AI.Navigation.Editor.csproj" />
-  <Project Path="Unity.InputSystem.ForUI.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
-  <Project Path="Unity.AI.Navigation.csproj" />
-  <Project Path="Unity.Collections.CodeGen.csproj" />
-  <Project Path="Unity.Mathematics.Editor.csproj" />
-  <Project Path="UniTask.TextMeshPro.csproj" />
-  <Project Path="Unity.InputSystem.TestFramework.csproj" />
-  <Project Path="Unity.ShaderGraph.Utilities.csproj" />
-  <Project Path="Unity.RenderPipeline.Universal.ShaderLibrary.csproj" />
-  <Project Path="UniTask.Editor.csproj" />
-  <Project Path="Unity.Rendering.LightTransport.Editor.csproj" />
-  <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
-  <Project Path="Unity.RenderPipelines.Universal.Shaders.csproj" />
-  <Project Path="Unity.RenderPipelines.Core.Runtime.Shared.csproj" />
-  <Project Path="Unity.2D.Sprite.AIIntegration.Editor.csproj" />
-  <Project Path="UniTask.Addressables.csproj" />
-  <Project Path="Unity.Collections.Editor.csproj" />
-  <Project Path="UniTask.DOTween.csproj" />
-  <Project Path="Unity.RenderPipelines.Universal.Config.Runtime.csproj" />
-  <Project Path="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj" />
-  <Project Path="Unity.RenderPipelines.Core.ShaderLibrary.csproj" />
-  <Project Path="Unity.RenderPipelines.Core.Editor.Shared.csproj" />
+<Solution>
+  <Project Path="Unity.Timeline.csproj" Id="08f9a457-4a23-5c96-01a0-9468b2c7cffd" />
+  <Project Path="Unity.RenderPipelines.GPUDriven.Runtime.csproj" Id="ea982e23-dac1-0a03-f7d7-e2c92ba422fa" />
+  <Project Path="Unity.ShaderGraph.Editor.csproj" Id="a23509ef-a22d-a6eb-e6ea-8063ab93b79d" />
+  <Project Path="Unity.RenderPipelines.Core.Runtime.csproj" Id="abd96cb1-c9a6-ef1e-bc34-b9415886d6c7" />
+  <Project Path="NaughtyAttributes.Test.csproj" Id="028ef69e-9253-6223-e6fa-a8daccedbaae" />
+  <Project Path="Unity.Mathematics.csproj" Id="cb28f4b6-3514-48a9-5f2e-2e76be590ffa" />
+  <Project Path="Unity.Timeline.Editor.csproj" Id="d1fd3290-7b53-b45c-99db-91b012fe8c31" />
+  <Project Path="Unity.RenderPipelines.Core.Editor.csproj" Id="167820b2-d7ba-68a6-fe7d-d3558915f2ae" />
+  <Project Path="Unity.Collections.csproj" Id="f4106690-fb2c-a820-2989-b5c8df98f2e1" />
+  <Project Path="UnityEngine.UI.csproj" Id="a3df4901-ed40-cf71-3aed-41ea3ad2d983" />
+  <Project Path="Unity.RenderPipelines.Universal.2D.Runtime.csproj" Id="decb52fb-3b9a-5e1b-0dac-78b67887b8ed" />
+  <Project Path="NaughtyAttributes.Core.csproj" Id="7c62448c-da86-be8e-359b-34d13008ad48" />
+  <Project Path="Unity.RenderPipelines.Universal.Editor.csproj" Id="0158ec2a-a0d3-c9dc-9075-9c3565a8d69a" />
+  <Project Path="Unity.PerformanceTesting.Editor.csproj" Id="77707128-5225-036f-3830-99f44e4353e0" />
+  <Project Path="UnityEngine.TestRunner.csproj" Id="23154e33-aa5a-31c3-f101-2b02e46b6e2e" />
+  <Project Path="Unity.2D.Tilemap.Editor.csproj" Id="f8d0f7e8-02d8-9eaa-fa4f-238b77508df7" />
+  <Project Path="Unity.Burst.csproj" Id="6521c0a0-fdf8-bab6-c6fd-b7941a105f5f" />
+  <Project Path="Unity.VisualStudio.Editor.csproj" Id="8bd6bff4-65c1-78b5-7587-b780e04bc1eb" />
+  <Project Path="Unity.InputSystem.csproj" Id="5b5a56cc-3fd3-326a-e53e-1b0c6da4afe1" />
+  <Project Path="PPv2URPConverters.csproj" Id="397e2035-524f-e364-eeae-097dfbe63e90" />
+  <Project Path="UniTask.csproj" Id="b6de78cd-f86c-4d27-e79a-c7ab2a77f882" />
+  <Project Path="Unity.Searcher.Editor.csproj" Id="5f1b2bc3-1760-8c8a-b764-75460bb34e9a" />
+  <Project Path="UnityEditor.TestRunner.csproj" Id="90c0d980-38da-07e6-d755-20bcdc160140" />
+  <Project Path="Unity.RenderPipelines.Universal.Runtime.csproj" Id="cac89dc4-326d-1c57-3060-97a45fdc6811" />
+  <Project Path="NaughtyAttributes.Editor.csproj" Id="0b844e85-86c5-0318-6e54-faf3e839cb3d" />
+  <Project Path="Unity.AI.Navigation.Editor.ConversionSystem.csproj" Id="51a3b814-d5d9-cad3-d579-1c24058c2ddd" />
+  <Project Path="Unity.Burst.CodeGen.csproj" Id="0dcf87ca-486e-a8d9-6afb-19a179c311f1" />
+  <Project Path="Unity.PerformanceTesting.csproj" Id="bbff1bab-58ca-7a8b-9f0f-353da8e862a1" />
+  <Project Path="Unity.TextMeshPro.csproj" Id="aed804d7-fa6f-4f86-fac9-b413a775fc50" />
+  <Project Path="UniTask.Linq.csproj" Id="286b5acc-8945-9990-bb14-ce78cc04529d" />
+  <Project Path="Unity.TextMeshPro.Editor.csproj" Id="fb057fb7-5821-376a-bc0a-ce9b8ea070af" />
+  <Project Path="Unity.Rendering.LightTransport.Runtime.csproj" Id="a6b7df13-cac2-b751-ca0d-953d523b5961" />
+  <Project Path="Unity.Burst.Editor.csproj" Id="1426e058-903c-cc05-b366-8c15c2940993" />
+  <Project Path="Unity.Rider.Editor.csproj" Id="e33eaaec-debd-cdb9-112c-01c0a50c4371" />
+  <Project Path="Unity.AI.Navigation.Updater.csproj" Id="09996801-9a98-b698-52a8-425820d54dc2" />
+  <Project Path="UnityEditor.UI.csproj" Id="f0e9bfb8-e39d-f0bc-29c3-3f893a992769" />
+  <Project Path="Unity.2D.Sprite.Editor.csproj" Id="51b8ee20-3452-cdca-b658-d92b7b268251" />
+  <Project Path="Unity.AI.Navigation.Editor.csproj" Id="a92cee7a-5260-e85e-0003-34d2503a5641" />
+  <Project Path="Unity.InputSystem.ForUI.csproj" Id="6bb297e1-672c-bf1f-578e-6c67282278a8" />
+  <Project Path="Assembly-CSharp.csproj" Id="a07a07ed-00d5-35e4-25e1-23695c7cca48" />
+  <Project Path="Unity.AI.Navigation.csproj" Id="8aa38d20-1e0a-baf4-01dd-ce7a5c413bcb" />
+  <Project Path="Unity.Collections.CodeGen.csproj" Id="f96d6ea8-5a37-43f2-d38c-2298c39c295c" />
+  <Project Path="Unity.Mathematics.Editor.csproj" Id="38d0d555-9c3a-db60-9fb0-c54b6570bc8a" />
+  <Project Path="UniTask.TextMeshPro.csproj" Id="c990816c-6cde-7c27-759a-195bfea3a614" />
+  <Project Path="Unity.InputSystem.TestFramework.csproj" Id="420cebe8-b8a1-a0a5-c1aa-27660ab957a8" />
+  <Project Path="Unity.ShaderGraph.Utilities.csproj" Id="4a7d44b2-80b1-d889-2b16-4101d07cda68" />
+  <Project Path="Unity.RenderPipeline.Universal.ShaderLibrary.csproj" Id="3fef01ed-8be8-77f5-9ead-2f29085c4895" />
+  <Project Path="UniTask.Editor.csproj" Id="53a7b891-a1ba-8078-436c-50a0f8d11568" />
+  <Project Path="Unity.Rendering.LightTransport.Editor.csproj" Id="ae6a467f-6f93-a97b-306d-c5577de96072" />
+  <Project Path="Unity.InputSystem.DocCodeSamples.csproj" Id="a3ea6c2b-a1bd-b98e-305e-4f27d335b451" />
+  <Project Path="Unity.RenderPipelines.Universal.Shaders.csproj" Id="1dcdefeb-643c-bbce-b5df-711d8f662ff3" />
+  <Project Path="Unity.RenderPipelines.Core.Runtime.Shared.csproj" Id="5ddf5b7e-0e39-d986-66dd-5833a0d894d3" />
+  <Project Path="Unity.2D.Sprite.AIIntegration.Editor.csproj" Id="64fb0995-e6f2-ab5d-d214-f136f34a43ba" />
+  <Project Path="UniTask.Addressables.csproj" Id="b1c985b4-a757-d0ad-3a2d-fc559a82a08a" />
+  <Project Path="Unity.Collections.Editor.csproj" Id="1699f6a3-b2e4-8036-7f12-288c1622c4d7" />
+  <Project Path="UniTask.DOTween.csproj" Id="cc5ce28a-4efa-461b-09df-b38f1bb86af9" />
+  <Project Path="Unity.RenderPipelines.Universal.Config.Runtime.csproj" Id="5af1fd12-c137-fad4-9469-587f740bf871" />
+  <Project Path="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj" Id="98618ff3-e116-452e-5a3a-e99d74f94737" />
+  <Project Path="Unity.RenderPipelines.Core.ShaderLibrary.csproj" Id="68677b43-907a-5e99-9842-e466aa4f170b" />
+  <Project Path="Unity.RenderPipelines.Core.Editor.Shared.csproj" Id="10b1e221-e087-ab38-59ab-7575cde4b098" />
 </Solution>
