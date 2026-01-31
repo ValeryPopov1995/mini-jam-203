@@ -141,7 +141,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sketch1769847437029_2
+      name: empt
       rect:
         serializedVersion: 2
         x: 908
@@ -493,7 +493,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty
+      name: demolish can
       rect:
         serializedVersion: 2
         x: 289
@@ -1358,8 +1358,9 @@ TextureImporter:
       can cap: 582007879
       can destroyed: 1515030633
       demolich bottle: -1592844785
+      demolish can: 1213122507
       drop: 2077102377
-      empty: 1213122507
+      empt: -81329277
       fire: -1476913491
       hand can: 1237656610
       interact: -516159261
@@ -1369,7 +1370,6 @@ TextureImporter:
       sketch1769847437029_16: 1656182307
       sketch1769847437029_17: -1451614168
       sketch1769847437029_19: 1907687468
-      sketch1769847437029_2: -81329277
       sketch1769847437029_20: 2114484961
       sketch1769847437029_21: 971359731
       sketch1769847437029_24: 1294242784
