@@ -57,6 +57,7 @@ namespace MiniJam203.HandView
             await Anim("drop " + _container);
         }
 
+        [Button]
         public async UniTask Drink()
         {
             await Anim("drink " + _container);
