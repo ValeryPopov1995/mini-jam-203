@@ -22,6 +22,7 @@ namespace MiniJam203.HandView
         private HandElement[] _hands;
 
         private Color _color;
+        private string _container;
         private float _fill;
 
         private void Awake()
@@ -36,21 +37,36 @@ namespace MiniJam203.HandView
             await Anim("drop can");
         }
 
-        public async UniTask PickCan(Color color)
+        public async UniTask Pick(string container, Color color, float volume01 = 1)
         {
-            ResetValues(color);
-            await Anim("pick can");
-        }
-
-        private void ResetValues(Color color)
-        {
+            _container = container;
             _color = color;
-            _fill = 1;
+            _fill = volume01;
+
             foreach (var hand in _hands)
             {
                 hand.Color = color;
                 hand.Fill = _fill;
             }
+
+            await Anim("pick " + _container);
+        }
+
+        public async UniTask Drop()
+        {
+            await Anim("drop " + _container);
+        }
+
+        public async UniTask Drink()
+        {
+            await Anim("drink " + _container);
+        }
+
+        public void SetVolume(float volume01)
+        {
+            _fill = volume01;
+            foreach (var hand in _hands)
+                hand.Fill = _fill;
         }
 
         private async UniTask Anim(string animation)
@@ -78,7 +94,7 @@ namespace MiniJam203.HandView
         }
 
 #if UNITY_EDITOR
-        [Button] private void TestPickCan() => _ = PickCan(Color.blue);
+        [Button] private void TestPickCan() => _ = Pick("can", Color.blue, .5f);
 #endif
     }
 }

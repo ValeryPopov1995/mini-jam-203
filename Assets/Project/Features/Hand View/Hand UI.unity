@@ -812,13 +812,13 @@ MonoBehaviour:
     - {fileID: 330217605}
   - AnimName: drink can
     Duration: 1
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 17962436005b4e94f9a329b5e13364fa, type: 3}
     Animation:
     - {fileID: 1919141551}
     - {fileID: 3654427}
   - AnimName: drink bottle
     Duration: 1
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 218256e3e47ff1943b2ed77c4f9a4972, type: 3}
     Animation:
     - {fileID: 1124603782}
     - {fileID: 1597550244}
