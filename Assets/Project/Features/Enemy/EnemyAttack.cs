@@ -105,7 +105,9 @@ public class EnemyAttack : MonoBehaviour
             var proj = Instantiate(prefab, spawnPos, transform.rotation);
             if (proj != null)
             {
+                proj.transform.LookAt(target.position);
                 proj.Init(config.damage, config.projectileSpeed, gameObject);
+
             }
         }
 
