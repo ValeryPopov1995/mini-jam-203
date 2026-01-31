@@ -584,8 +584,8 @@ TextureImporter:
       name: tree 2
       rect:
         serializedVersion: 2
-        x: 1714
-        y: 1635
+        x: 1847
+        y: 1638
         width: 319
         height: 628
       alignment: 0
@@ -606,8 +606,8 @@ TextureImporter:
       name: tree 3
       rect:
         serializedVersion: 2
-        x: 2064
-        y: 1743
+        x: 2201
+        y: 1742
         width: 395
         height: 578
       alignment: 0
@@ -739,9 +739,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 630
-        y: 1653
+        y: 1719
         width: 77
-        height: 103
+        height: 37
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1240,6 +1240,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: props_0
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1686
+        width: 76
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99d6dcfc8265a5344ac88b7ec65ca686
+      internalID: 1112459301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: props_4
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1655
+        width: 77
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45b0de0982afe6f4d9a819110a86e447
+      internalID: 382050381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1261,6 +1305,7 @@ TextureImporter:
       menu new game: -1478319071
       menu quit: -677117657
       menu restart: 284027298
+      props_0: 1112459301
       props_1: -710606092
       props_11: -1164860319
       props_13: 104966911
@@ -1289,6 +1334,7 @@ TextureImporter:
       props_37: 1972318851
       props_38: 576437671
       props_39: 1069735862
+      props_4: 382050381
       props_40: -982737359
       props_41: -435076718
       props_42: -1128877196
