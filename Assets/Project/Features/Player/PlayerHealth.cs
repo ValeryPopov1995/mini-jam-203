@@ -5,12 +5,7 @@ using UnityEngine;
 namespace MiniJam203.Player
 {
     // Интерфейс, который должен реализовывать любой объект, получающий урон.
-    public interface IDamagable
-    {
-        void TakeDamage(float damage, GameObject attacker);
-    }
-
-    public class PlayerHealth : MonoBehaviour, IDamagable
+    public class PlayerHealth : MonoBehaviour, IDamageable
     {
         [Header("Health")]
         [SerializeField] private float maxHealth = 100f;
