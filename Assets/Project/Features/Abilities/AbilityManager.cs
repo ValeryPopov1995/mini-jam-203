@@ -7,8 +7,8 @@ namespace Project.Features.Abilities
     public class AbilityManager : MonoBehaviour
     {
         [Header("Potions")]
-        [SerializeField] private Vessel leftVessel;
-        [SerializeField] private Vessel rightVessel;
+        public Vessel leftVessel;
+        public Vessel rightVessel;
         
         [SerializeField] private InputAction leftGulp;   
         [SerializeField] private InputAction rightGulp;  

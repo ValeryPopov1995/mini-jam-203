@@ -4,7 +4,7 @@ namespace Project.Features.Abilities
 {
     public class Vessel : MonoBehaviour
     {
-        [SerializeField] private int maxCapacity = 3;
+        public int maxCapacity = 3;
         public int currentAmount = 3;
         
         public bool dropped;
