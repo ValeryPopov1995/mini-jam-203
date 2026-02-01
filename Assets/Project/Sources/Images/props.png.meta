@@ -584,10 +584,10 @@ TextureImporter:
       name: tree 2
       rect:
         serializedVersion: 2
-        x: 1847
-        y: 1638
-        width: 319
-        height: 628
+        x: 1878
+        y: 1673
+        width: 327
+        height: 577
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -606,9 +606,9 @@ TextureImporter:
       name: tree 3
       rect:
         serializedVersion: 2
-        x: 2201
-        y: 1742
-        width: 395
+        x: 2227
+        y: 1743
+        width: 412
         height: 578
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1249,7 +1249,7 @@ TextureImporter:
         width: 76
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1271,7 +1271,7 @@ TextureImporter:
         width: 77
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
