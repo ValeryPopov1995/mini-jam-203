@@ -29,9 +29,19 @@ namespace MiniJam203
             {
                 for (var i = 0; i < _frames.Length; i++)
                 {
-                    _frames[i].SetActive(true);
+                    try
+                    {
+                        _frames[i].SetActive(true);
+                    }
+                    catch { }
+
                     await UniTask.Delay(TimeSpan.FromSeconds(_frameDuration));
-                    _frames[i].SetActive(false);
+
+                    try
+                    {
+                        _frames[i].SetActive(false);
+                    }
+                    catch { }
                 }
             }
 

@@ -1,4 +1,7 @@
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace MiniJam203.Menu
 {
@@ -7,6 +10,7 @@ namespace MiniJam203.Menu
         public event System.Action OnStartedGame;
 
         [SerializeField] private Menu _menu;
+        [SerializeField] private Image _fade;
 
         [SerializeField] private GameObject[] _disableOnStart;
         [SerializeField] private GameObject[] _enableOnStart;
@@ -18,6 +22,7 @@ namespace MiniJam203.Menu
 
         private void Awake()
         {
+            _ = _fade.DOFade(0, 1).AsyncWaitForCompletion();
             _menu.gameObject.SetActive(true);
             _input.enabled = false;
         }
@@ -39,9 +44,11 @@ namespace MiniJam203.Menu
             }
         }
 
-        private void ShowDiedMenu(GameObject @object)
+        private async void ShowDiedMenu(GameObject @object)
         {
             _player.OnDied -= ShowDiedMenu;
+            await _fade.DOFade(1, 1).AsyncWaitForCompletion();
+            SceneManager.LoadScene(0);
         }
 
         public void Quit()

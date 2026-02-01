@@ -98,12 +98,13 @@ public class BeamAbility : Ability
         Collider[] hits = Physics.OverlapSphere(hitPoint, beamRadius, hitLayers);
         foreach (var col in hits)
         {
-            IDamageable target = col.attachedRigidbody.GetComponent<IDamageable>();
-                               
-            if (target != null)
+            try
             {
-                target.TakeDamage(damage);
+                IDamageable target = col.attachedRigidbody.GetComponent<IDamageable>();
+                if (target != null)
+                    target.TakeDamage(damage);
             }
+            catch { }
         }
     }
 
@@ -116,7 +117,7 @@ public class BeamAbility : Ability
     {
         if (muzzleInstance != null)
         {
-            Destroy(muzzleInstance);
+            Destroy(muzzleInstance.gameObject);
             muzzleInstance = null;
         }
         if (laserSound != null) laserSound.Stop();

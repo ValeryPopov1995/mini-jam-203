@@ -18,6 +18,7 @@ namespace Project.Features.Abilities
 
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.linearVelocity = direction * speed;
+
             Destroy(gameObject, lifeTime);
         }
 

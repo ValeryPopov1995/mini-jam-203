@@ -13,7 +13,7 @@ namespace Project.Features.Abilities
             {
                 if (_currentAmount == 0 && value > 0) _ = _hand.Pick("can", Color);
                 else if (_currentAmount > value) _ = _hand.Drink();
-                //else if (value == 0) _ = _hand.Drop();
+                else if (value == 0) _ = _hand.Drop();
 
                 _currentAmount = value;
             }

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
@@ -14,6 +14,8 @@ public class Grenade : MonoBehaviour
         pushStrength = pushStr;
         knockbackDuration = kbDuration;
         explosionEffect = effect;
+
+        Destroy(gameObject, 9);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -37,7 +39,7 @@ public class Grenade : MonoBehaviour
             if (!col.attachedRigidbody) continue;
             if (col.attachedRigidbody.TryGetComponent<IDamageable>(out var target))
             {
-                target.TakeDamage(damage,gameObject);
+                target.TakeDamage(damage, gameObject);
             }
         }
 
