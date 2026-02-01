@@ -74,7 +74,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5950972679118953016, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
       propertyPath: m_Name
-      value: Wall_6 Variant
+      value: Wall_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950972679118953016, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950972679118953016, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158121006959037150, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158121006959037150, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901996906282417798, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901996906282417798, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

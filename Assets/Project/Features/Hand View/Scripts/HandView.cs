@@ -72,7 +72,11 @@ namespace MiniJam203.HandView
 
         public async UniTask Anim(string animation)
         {
+            if (!_animDatas.Any(data => data.AnimName == animation)) return;
+
+            Debug.Log("start hand animation: " + animation);
             HideHands();
+
             var data = _animDatas.First(data => data.AnimName == animation);
             var frameDuration = data.Duration / data.Animation.Length;
             if (data.Clip) _source.PlayOneShot(data.Clip);

@@ -74,7 +74,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5950972679118953016, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
       propertyPath: m_Name
-      value: Wall_5 Variant
+      value: Wall_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950972679118953016, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950972679118953016, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158121006959037150, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158121006959037150, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6433434004829573013, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
       propertyPath: m_LocalScale.x
@@ -91,6 +107,14 @@ PrefabInstance:
     - target: {fileID: 6433434004829573013, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.361
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901996906282417798, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901996906282417798, guid: d367d99db76243c4d85ca8ca813d1144, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

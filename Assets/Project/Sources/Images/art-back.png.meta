@@ -1293,7 +1293,7 @@ TextureImporter:
         width: 39
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1315,7 +1315,7 @@ TextureImporter:
         width: 38
         height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1337,7 +1337,7 @@ TextureImporter:
         width: 33
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1346,6 +1346,226 @@ TextureImporter:
       bones: []
       spriteID: 02423c1407450db41ae61cf891eedc0b
       internalID: 236922596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: art-back_0
+      rect:
+        serializedVersion: 2
+        x: 2670
+        y: 827
+        width: 212
+        height: 336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f5f2b9fd693904d8fe10c60761cde6
+      internalID: 123755825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: art-back_3
+      rect:
+        serializedVersion: 2
+        x: 2928
+        y: 834
+        width: 251
+        height: 321
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d2f1be84b6fc249a92b6158f0452d8
+      internalID: -1460454594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: art-back_4
+      rect:
+        serializedVersion: 2
+        x: 3250
+        y: 871
+        width: 165
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f5514bd91a954d4ea9ea4e55c14aea9
+      internalID: 1753340371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: art-back_7
+      rect:
+        serializedVersion: 2
+        x: 2702
+        y: 348
+        width: 182
+        height: 326
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98048a43e145d0e47aaf13d2ff427897
+      internalID: -48585129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: art-back_8
+      rect:
+        serializedVersion: 2
+        x: 2967
+        y: 357
+        width: 184
+        height: 330
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e5ce45f77e777942a3b11f8322cece4
+      internalID: -2116757265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: art-back_9
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 585
+        width: 261
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03777fa729de7354dab192e6ed21a8c2
+      internalID: -1163681280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: art-back_10
+      rect:
+        serializedVersion: 2
+        x: 3479
+        y: 455
+        width: 232
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9423ccfbb6c051949915d8ef5cd7b395
+      internalID: -468585096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: art-back_11
+      rect:
+        serializedVersion: 2
+        x: 2927
+        y: 1260
+        width: 101
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d8b32872bce9448957536488bea14c
+      internalID: -1351246193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: art-back_13
+      rect:
+        serializedVersion: 2
+        x: 3870
+        y: 489
+        width: 232
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 389b32ce55651894784294897d64cd6f
+      internalID: 409686496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: art-back_14
+      rect:
+        serializedVersion: 2
+        x: 4125
+        y: 503
+        width: 241
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa5b133883e2005478fa3f45d51acfcb
+      internalID: 123649183
       vertices: []
       indices: 
       edges: []
@@ -1366,6 +1586,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
+      art-back_0: 123755825
       art-back_1: 2121274385
       art-back_10: -468585096
       art-back_11: -1351246193
@@ -1385,6 +1606,7 @@ TextureImporter:
       art-back_27: -397038140
       art-back_28: 451764271
       art-back_29: 182832275
+      art-back_3: -1460454594
       art-back_30: 1538631738
       art-back_31: 1921962027
       art-back_32: 581232063
@@ -1425,6 +1647,7 @@ TextureImporter:
       art-back_67: 1419069828
       art-back_68: -1139969814
       art-back_69: -489466671
+      art-back_7: -48585129
       art-back_70: -453916299
       art-back_71: 920295308
       art-back_72: 1101905143
@@ -1433,6 +1656,7 @@ TextureImporter:
       art-back_77: -1207717367
       art-back_78: 1300343511
       art-back_79: -773176702
+      art-back_8: -2116757265
       art-back_86: 13598032
       art-back_87: 1405127594
       art-back_9: -1163681280
