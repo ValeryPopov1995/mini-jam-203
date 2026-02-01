@@ -1,4 +1,4 @@
-﻿<Solution>
+<Solution>
   <Project Path="Unity.Timeline.csproj" />
   <Project Path="Unity.ShaderGraph.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.GPUDriven.Runtime.csproj" />
