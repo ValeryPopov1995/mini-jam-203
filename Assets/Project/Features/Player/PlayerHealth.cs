@@ -15,7 +15,7 @@ namespace MiniJam203.Player
 
         private float currentHealth;
         private bool isDead;
-        private bool isInvulnerable;
+        [SerializeField]private bool isInvulnerable;
         private Coroutine invulCoroutine;
 
         private void Awake()
@@ -26,7 +26,6 @@ namespace MiniJam203.Player
             OnHealthChanged?.Invoke(currentHealth);
         }
 
-        // ���������� ����������
         public void TakeDamage(float damage, GameObject attacker)
         {
             if (isDead) return;
@@ -62,9 +61,6 @@ namespace MiniJam203.Player
         {
             if (isDead) return;
             isDead = true;
-
-            // ����� �������� ���������� ����������, ������������ �������� � �.�.
-            Debug.Log($"{gameObject.name} died. Killer: {(attacker != null ? attacker.name : "Unknown")}");
 
             OnDied?.Invoke(attacker);
         }

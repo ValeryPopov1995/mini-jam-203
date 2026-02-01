@@ -9,7 +9,7 @@ namespace Project.Features.Abilities
         private float damage;
         private GameObject hitEffectPrefab;
         
-        public void Initialize(ArrowAbility ability, Vector3 direction, float arrowSpeed, float lifetime)
+        public void Initialize(ShootingAbility ability, Vector3 direction, float arrowSpeed, float lifetime)
         {
             speed = arrowSpeed;
             lifeTime = lifetime;
