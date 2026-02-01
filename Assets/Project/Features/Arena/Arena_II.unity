@@ -1048,6 +1048,7 @@ MonoBehaviour:
   onOverload:
     m_PersistentCalls:
       m_Calls: []
+  overloadDamage: 0
 --- !u!54 &998420957
 Rigidbody:
   m_ObjectHideFlags: 0

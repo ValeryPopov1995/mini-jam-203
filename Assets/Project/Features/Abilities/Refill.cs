@@ -21,7 +21,6 @@ public class Refill : MonoBehaviour
 
     private void Start()
     {
-        // Находим AbilityManager (по тегу/компоненту)
         abilityManager = FindAnyObjectByType<AbilityManager>();
         if (abilityManager == null)
             Debug.LogError("Refill: AbilityManager не найден!");
@@ -55,7 +54,6 @@ public class Refill : MonoBehaviour
                     abilityManager.leftVessel.currentAmount + refillAmountLeft
                 );
             abilityManager.leftVessel.dropped = false;
-            Debug.Log($"🧪 Left Vessel: {abilityManager.leftVessel.currentAmount}/{abilityManager.leftVessel.maxCapacity}");
         }
 
         if (abilityManager.rightVessel != null)
