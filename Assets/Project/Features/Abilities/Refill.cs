@@ -28,7 +28,7 @@ public class Refill : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!CanRefill()) return;
+        if (!other.CompareTag("Player") || !CanRefill()) return;
 
         RefillVessels();
         UseRefill();

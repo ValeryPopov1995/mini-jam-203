@@ -74,6 +74,7 @@ namespace MiniJam203.HandView
         {
             if (!_animDatas.Any(data => data.AnimName == animation)) return;
 
+            Debug.Log("start hand animation: " + animation);
             HideHands();
 
             var data = _animDatas.First(data => data.AnimName == animation);

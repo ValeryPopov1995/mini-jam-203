@@ -4908,7 +4908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8334125423424240586, guid: 431f54985cc47f6408438fcf0df2b0d9, type: 3}
       propertyPath: m_Name
-      value: Boom Variant
+      value: Boom
       objectReference: {fileID: 0}
     - target: {fileID: 9159308912997051971, guid: 431f54985cc47f6408438fcf0df2b0d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4979,7 +4979,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}

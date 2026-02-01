@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -21,10 +22,10 @@ namespace MiniJam203.Menu
 
         private async void OnEnable()
         {
-            await _fade.DOFade(0, 1).AsyncWaitForCompletion();
-
+            await UniTask.Delay(500);
             _ = _menuHandL.Anim(_animShowMenu);
-            await _menuHandR.Anim(_animShowMenu);
+            _ = _menuHandR.Anim(_animShowMenu);
+            await _fade.DOFade(0, 1).AsyncWaitForCompletion();
 
             _startAction.action.Enable();
             _quitAction.action.Enable();

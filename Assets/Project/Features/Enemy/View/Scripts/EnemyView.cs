@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using NaughtyAttributes;
 using System;
 using UnityEngine;
@@ -9,8 +10,8 @@ namespace MiniJam203
     {
         private class AnimationData
         {
-            private float _frameDuration;
-            private GameObject[] _frames;
+            private readonly float _frameDuration;
+            private readonly GameObject[] _frames;
 
             public AnimationData(Transform framesParent, float duration)
             {
@@ -43,6 +44,7 @@ namespace MiniJam203
 
         [SerializeField] private float _moveCircleDuration = 1;
         [SerializeField] private float _attackDuration = 1;
+        [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private Transform _moveFrameParent;
         [SerializeField] private Transform _attackFrameParent;
 
@@ -69,6 +71,12 @@ namespace MiniJam203
             _move.Stop();
             await _attack.PlayCircle();
             _moveFrameParent.gameObject.SetActive(true);
+        }
+
+        public async UniTask GetDamage()
+        {
+            await _sprite.material.DOColor(Color.red, .5f).AsyncWaitForCompletion();
+            await _sprite.material.DOColor(Color.white, .5f).AsyncWaitForCompletion();
         }
 
         public void Dispose()

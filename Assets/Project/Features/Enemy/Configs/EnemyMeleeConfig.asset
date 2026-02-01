@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4cf9f6618b6d04bb28aae1ede93b92, type: 3}
   m_Name: EnemyMeleeConfig
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
-  maxHP: 100
+  maxHP: 3
   moveSpeed: 3.5
   attackRange: 2
   attackCooldown: 1

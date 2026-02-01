@@ -4,6 +4,7 @@ namespace MiniJam203
 {
     public interface IEnemyView
     {
-        public UniTask Attack();
+        UniTask Attack();
+        UniTask GetDamage();
     }
 }

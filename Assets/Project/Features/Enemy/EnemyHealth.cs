@@ -1,3 +1,4 @@
+using MiniJam203;
 using System;
 using UnityEngine;
 
@@ -5,7 +6,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 {
     public float hp;
     public bool IsDead { get; private set; }
-    EnemyConfig config;
+    private EnemyConfig config;
+    private IEnemyView enemyView;
 
     public event Action OnDeath;
 
@@ -13,6 +15,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     {
         config = cfg;
         hp = cfg != null ? cfg.maxHP : 100f;
+    }
+
+    private void Awake()
+    {
+        enemyView = GetComponentInChildren<IEnemyView>();
     }
 
     public void TakeDamage(float amount, GameObject attacker = null)
@@ -26,11 +33,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         }
         else
         {
-            // Здесь можно добавить реакции на урон: вспышка, звук, агро и т.д.
+            enemyView.GetDamage();
         }
     }
 
-    void Die()
+    private void Die()
     {
         if (IsDead) return;
         IsDead = true;
