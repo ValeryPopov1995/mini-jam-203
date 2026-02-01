@@ -1,12 +1,14 @@
-using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace MiniJam203.Menu
 {
     public class Menu : MonoBehaviour
     {
         [SerializeField] private GameLoopManager _manager;
+        [SerializeField] private Image _fade;
 
         [SerializeField] private HandView.HandView _menuHandL;
         [SerializeField] private HandView.HandView _menuHandR;
@@ -19,7 +21,7 @@ namespace MiniJam203.Menu
 
         private async void OnEnable()
         {
-            await UniTask.Delay(500);
+            await _fade.DOFade(0, 1).AsyncWaitForCompletion();
 
             _ = _menuHandL.Anim(_animShowMenu);
             await _menuHandR.Anim(_animShowMenu);

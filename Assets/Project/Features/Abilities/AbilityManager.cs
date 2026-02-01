@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using MiniJam203.ComboView;
+using MiniJam203.Menu;
 using MiniJam203.Player;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,6 +32,7 @@ namespace Project.Features.Abilities
         private bool isDrinkingWindowActive = false;
 
         private PlayerHealth _player;
+        private GameLoopManager _manager;
 
         private void OnEnable()
         {
@@ -41,6 +44,16 @@ namespace Project.Features.Abilities
 
             _player = FindAnyObjectByType<PlayerHealth>();
             onOverload.AddListener(() => _player.TakeDamage(overloadDamage, gameObject));
+
+            _manager = FindFirstObjectByType<GameLoopManager>();
+            _manager.OnStartedGame += PickAtStart;
+        }
+
+        private async void PickAtStart()
+        {
+            leftVessel.CurrentAmount = leftVessel.maxCapacity;
+            await UniTask.Delay(1000);
+            rightVessel.CurrentAmount = rightVessel.maxCapacity;
         }
 
         private void OnDisable()
@@ -50,6 +63,8 @@ namespace Project.Features.Abilities
 
             leftGulp?.Disable();
             rightGulp?.Disable();
+
+            _manager.OnStartedGame -= PickAtStart;
         }
 
         private void Update()

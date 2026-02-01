@@ -1,3 +1,4 @@
+using MiniJam203;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyConfigHolder))]
@@ -12,6 +13,7 @@ public class EnemyAttack : MonoBehaviour
     [Tooltip("Слои, которым можно наносить урон (НЕ Enemy)")]
     [SerializeField] public LayerMask damageMask = ~0;
 
+    private IEnemyView enemyView;
     private EnemyConfig config;
     private float lastAttackTime;
 
@@ -23,6 +25,7 @@ public class EnemyAttack : MonoBehaviour
     private void Awake()
     {
         config = GetComponent<EnemyConfigHolder>().Config;
+        enemyView = GetComponentInChildren<IEnemyView>();
     }
 
     public float AttackRange => config != null ? config.attackRange : 1f;
@@ -49,6 +52,8 @@ public class EnemyAttack : MonoBehaviour
             DoMeleeAttack();
         else
             DoRangedAttack(target);
+
+        if (enemyView != null) enemyView.Attack();
     }
 
     private void DoMeleeAttack()
@@ -132,7 +137,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (config == null) return;
         // Красная сфера — зона melee атаки
-        Gizmos.color = Color.red; 
+        Gizmos.color = Color.red;
         Vector3 attackCenter = transform.position + transform.forward * (AttackRange * 0.5f);
         Gizmos.DrawWireSphere(attackCenter, AttackRange);
     }
@@ -140,19 +145,19 @@ public class EnemyAttack : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (!Application.isPlaying) return; var enemyTarget = GetComponent<EnemyTarget>();
-        if (enemyTarget == null || enemyTarget.Target == null) 
-            return; 
-        Vector3 origin = transform.position + Vector3.up * eyeHeight; 
-        Vector3 aimPoint = GetAimPoint(enemyTarget.Target); 
-        Vector3 dir = aimPoint - origin; float dist = dir.magnitude; 
+        if (enemyTarget == null || enemyTarget.Target == null)
+            return;
+        Vector3 origin = transform.position + Vector3.up * eyeHeight;
+        Vector3 aimPoint = GetAimPoint(enemyTarget.Target);
+        Vector3 dir = aimPoint - origin; float dist = dir.magnitude;
         bool blocked = Physics.Raycast(origin, dir.normalized, dist, lineOfSightMask);
         // Проверяем, есть ли попадание по damageMask
         bool hitsDamageable = Physics.Raycast(origin, dir.normalized, out RaycastHit hit2, dist, damageMask);
-        if (hitsDamageable) 
+        if (hitsDamageable)
             Gizmos.color = Color.green; // атака попадёт по цели (игрок)
         else if (blocked)
             Gizmos.color = Color.red; // линия блокируется
-        else 
+        else
             Gizmos.color = Color.yellow;
         // свободная линия, но не цель
         Gizmos.DrawLine(origin, aimPoint); // Дополнительно для melee: линии к потенциальным целям

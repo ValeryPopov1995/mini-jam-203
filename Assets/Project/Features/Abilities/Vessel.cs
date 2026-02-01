@@ -1,5 +1,4 @@
 using MiniJam203.HandView;
-using MiniJam203.Menu;
 using UnityEngine;
 
 namespace Project.Features.Abilities
@@ -28,23 +27,6 @@ namespace Project.Features.Abilities
 
 
         [SerializeField] private HandView _hand;
-        private GameLoopManager _manager;
-
-        private void Awake()
-        {
-            _manager = FindFirstObjectByType<GameLoopManager>();
-            _manager.OnStartedGame += PickCanAtStart;
-        }
-
-        private void OnDestroy()
-        {
-            _manager.OnStartedGame -= PickCanAtStart;
-        }
-
-        private void PickCanAtStart()
-        {
-            CurrentAmount = maxCapacity;
-        }
 
         public void Sip()
         {
