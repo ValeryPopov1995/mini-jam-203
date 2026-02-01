@@ -5,35 +5,41 @@ using UnityEngine;
 
 public class BeamAbility : Ability
 {
-    [SerializeField] private PlayerHealth _player;
+    private PlayerHealth _player;
+
     [Header("Laser Settings")]
-    [SerializeField] private float laserDuration = 1.5f;      
-    [SerializeField] private float damagePerSecond = 50f;     
-    [SerializeField] private float maxRange = 100f;          
-    [SerializeField] private float recoilDamage = 1f;           
+    [SerializeField] private float laserDuration = 1.5f;
+    [SerializeField] private float damagePerSecond = 50f;
+    [SerializeField] private float maxRange = 100f;
+    [SerializeField] private float recoilDamage = 1f;
 
     [Header("Visual")]
-    [SerializeField] private LineRenderer laserLine;
-    [SerializeField] private Material laserMaterial;          
-    [SerializeField] private LayerMask hitLayers = -1;        
+    [SerializeField] private GameObject laserMuzzlePrefab;
+    [SerializeField] private LayerMask hitLayers = -1;
 
     [Header("Effects")]
-    [SerializeField] private ParticleSystem hitParticles;     
+    [SerializeField] private ParticleSystem hitParticles;
     [SerializeField] private AudioSource laserSound;
 
+    private GameObject muzzleInstance;
     private Coroutine laserCoroutine;
+
+    private void Start()
+    {
+        _player = FindAnyObjectByType<PlayerHealth>();
+    }
 
     public override void Activate()
     {
-        if (laserCoroutine != null) return; 
-
+        if (laserCoroutine != null) return;
         laserCoroutine = StartCoroutine(LaserBeam());
     }
 
     private IEnumerator LaserBeam()
     {
-        // Визуал setup
-        SetupLaserVisual();
+        Camera cam = Camera.main;
+
+        SpawnMuzzleFlash(cam.transform.position);
         PlayLaserSound();
 
         float damagePerFrame = damagePerSecond * Time.deltaTime;
@@ -41,18 +47,14 @@ public class BeamAbility : Ability
 
         while (elapsed < laserDuration)
         {
-            
-            Camera cam = Camera.main;
             Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
 
             if (Physics.Raycast(ray, out RaycastHit hit, maxRange, hitLayers))
             {
-                UpdateLaserLine(cam.transform.position, hit.point);
+                UpdateMuzzleDirection(ray.origin, hit.point);
 
-                
                 DamageInBeam(hit.point, 0.3f, damagePerFrame);
 
-                
                 if (hitParticles != null)
                 {
                     hitParticles.transform.position = hit.point;
@@ -61,45 +63,34 @@ public class BeamAbility : Ability
             }
             else
             {
-                
-                Vector3 endPos = cam.transform.position + cam.transform.forward * maxRange;
-                UpdateLaserLine(cam.transform.position, endPos);
+                Vector3 endPos = ray.origin + ray.direction * maxRange;
+                UpdateMuzzleDirection(ray.origin, endPos);
             }
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        _player.TakeDamage(recoilDamage,gameObject);
-        // Cleanup
+        _player.TakeDamage(recoilDamage, gameObject);
         CleanupLaser();
         laserCoroutine = null;
-
-        Debug.Log($"<color=cyan>LaserAbility</color>: Луч длился {laserDuration}s, DPS: {damagePerSecond}");
     }
 
-    private void SetupLaserVisual()
+    private void SpawnMuzzleFlash(Vector3 muzzlePos)
     {
-        if (laserLine == null)
-        {
-            GameObject lineObj = new GameObject("LaserLine");
-            lineObj.transform.SetParent(transform);
-            laserLine = lineObj.AddComponent<LineRenderer>();
-        }
+        if (laserMuzzlePrefab == null) return;
 
-        laserLine.positionCount = 2;
-        laserLine.startWidth = 0.1f;
-        laserLine.endWidth = 0.05f;
-        laserLine.material = laserMaterial ?? new Material(Shader.Find("Sprites/Default"));
-        laserLine.startColor = Color.red;
-        laserLine.endColor = Color.yellow;
-        laserLine.enabled = true;
+        muzzleInstance = Instantiate(laserMuzzlePrefab, muzzlePos, Quaternion.identity);
+        muzzleInstance.transform.SetParent(transform);
     }
 
-    private void UpdateLaserLine(Vector3 start, Vector3 end)
+    private void UpdateMuzzleDirection(Vector3 start, Vector3 end)
     {
-        laserLine.SetPosition(0, start);
-        laserLine.SetPosition(1, end);
+        if (muzzleInstance == null) return;
+
+        muzzleInstance.transform.position = start;
+        Vector3 direction = (end - start).normalized;
+        muzzleInstance.transform.rotation = Quaternion.LookRotation(direction);
     }
 
     private void DamageInBeam(Vector3 hitPoint, float beamRadius, float damage)
@@ -107,7 +98,9 @@ public class BeamAbility : Ability
         Collider[] hits = Physics.OverlapSphere(hitPoint, beamRadius, hitLayers);
         foreach (var col in hits)
         {
-            if (col.attachedRigidbody.TryGetComponent<IDamageable>(out var target))
+            IDamageable target = col.attachedRigidbody.GetComponent<IDamageable>();
+                               
+            if (target != null)
             {
                 target.TakeDamage(damage);
             }
@@ -116,16 +109,17 @@ public class BeamAbility : Ability
 
     private void PlayLaserSound()
     {
-        if (laserSound != null)
-            laserSound.Play();
+        if (laserSound != null) laserSound.Play();
     }
 
     private void CleanupLaser()
     {
-        if (laserLine != null)
-            laserLine.enabled = false;
-        if (laserSound != null)
-            laserSound.Stop();
+        if (muzzleInstance != null)
+        {
+            Destroy(muzzleInstance);
+            muzzleInstance = null;
+        }
+        if (laserSound != null) laserSound.Stop();
     }
 
     private void OnDrawGizmosSelected()

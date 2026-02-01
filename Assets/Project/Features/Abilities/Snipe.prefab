@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6561856156781399674}
   - component: {fileID: 4129598089844739885}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: Snipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.05
+  m_Radius: 0.075
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1035630565253185525
 PrefabInstance:
@@ -109,15 +109,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1931215821972900427, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1931215821972900427, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1931215821972900427, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1931215821972900427, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -157,6 +157,62 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1931215821972900427, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931215821972900427, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: TrailModule.ribbonCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.b
+      value: 0.12941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.g
+      value: 0.28627452
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.r
+      value: 0.79607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.b
+      value: 0.12941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.g
+      value: 0.28627452
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146114572338829557, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.r
+      value: 0.7960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032988842066523990, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032988842066523990, guid: 5dc1228ab5b3fb84e935cb8c7e67ecef, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
