@@ -20,5 +20,5 @@ MonoBehaviour:
   deathDestroyDelay: 0
   projectilePrefab: {fileID: 4909817420657371125, guid: cb8bb2c80ecabee4b8991d851f40219e, type: 3}
   damage: 3
-  projectileSpeed: 5
+  projectileSpeed: 50
   attackType: 1
