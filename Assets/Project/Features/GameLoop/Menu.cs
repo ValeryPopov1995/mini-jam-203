@@ -19,7 +19,7 @@ namespace MiniJam203.Menu
 
         private async void OnEnable()
         {
-            await UniTask.Yield();
+            await UniTask.Delay(500);
 
             _ = _menuHandL.Anim(_animShowMenu);
             await _menuHandR.Anim(_animShowMenu);
@@ -46,10 +46,12 @@ namespace MiniJam203.Menu
             _manager.Quit();
         }
 
-        private  async void InvokeStartGame(InputAction.CallbackContext context)
+        private async void InvokeStartGame(InputAction.CallbackContext context)
         {
             await _menuHandR.Anim(_animHideMenu);
             _manager.StartNewGame();
+            enabled = false;
+
         }
     }
 }

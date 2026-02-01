@@ -1,3 +1,4 @@
+using MiniJam203.ComboView;
 using MiniJam203.Player;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,12 +22,15 @@ namespace Project.Features.Abilities
         [SerializeField] private int maxTotalGulps = 3;
         public UnityEvent onOverload;
         public float overloadDamage;
+
+        [SerializeField] private ComboView _comboView;
         private int leftCount = 0;
         private int rightCount = 0;
         private float drinkingSartTime;
         private bool isDrinkingWindowActive = false;
 
         private PlayerHealth _player;
+
         private void OnEnable()
         {
             leftGulp?.Enable();
@@ -51,37 +55,27 @@ namespace Project.Features.Abilities
         private void Update()
         {
             if (isDrinkingWindowActive && Time.time > drinkingSartTime + drinkWindow)
-            {
                 ProcessMix();
-            }
         }
 
         private void OnLeftGulp(InputAction.CallbackContext context)
         {
             if (leftVessel.Dropped) return;
-            if (!leftVessel.CanDrink)
-            {
-                leftVessel.EmptyAndDrop();
-                return;
-            }
 
             leftVessel.Sip();
             leftCount++;
             StartDrinkingWindow();
+            _ = _comboView.AddColor(Color.blue);
         }
 
         private void OnRightGulp(InputAction.CallbackContext context)
         {
             if (rightVessel.Dropped) return;
-            if (!rightVessel.CanDrink)
-            {
-                rightVessel.EmptyAndDrop();
-                return;
-            }
 
             rightVessel.Sip();
             rightCount++;
             StartDrinkingWindow();
+            _ = _comboView.AddColor(Color.red);
         }
 
         private void StartDrinkingWindow()
@@ -124,6 +118,7 @@ namespace Project.Features.Abilities
             leftCount = 0;
             rightCount = 0;
             isDrinkingWindowActive = false;
+            _ = _comboView.ResetColors();
         }
 
         [System.Serializable]

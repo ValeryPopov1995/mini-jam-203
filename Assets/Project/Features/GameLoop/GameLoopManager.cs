@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace MiniJam203.Menu
 {
@@ -28,15 +26,14 @@ namespace MiniJam203.Menu
         {
             if (!_isStartedGame)
             {
-                _isStartedGame=true;
+                _isStartedGame = true;
 
-                _menu.gameObject.SetActive(false);
                 _input.enabled = true;
 
                 _player.OnDied += ShowDiedMenu;
 
                 foreach (var item in _disableOnStart) item.SetActive(false);
-                foreach(var item in _enableOnStart) item.SetActive(true);
+                foreach (var item in _enableOnStart) item.SetActive(true);
 
                 OnStartedGame?.Invoke();
             }

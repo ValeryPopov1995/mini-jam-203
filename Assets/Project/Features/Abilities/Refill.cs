@@ -47,25 +47,23 @@ public class Refill : MonoBehaviour
         if (abilityManager.leftVessel != null)
         {
             if (refillAmountLeft == 0)
-                abilityManager.leftVessel.currentAmount = abilityManager.leftVessel.maxCapacity;
+                abilityManager.leftVessel.CurrentAmount = abilityManager.leftVessel.maxCapacity;
             else
-                abilityManager.leftVessel.currentAmount = Mathf.Min(
+                abilityManager.leftVessel.CurrentAmount = Mathf.Min(
                     abilityManager.leftVessel.maxCapacity,
-                    abilityManager.leftVessel.currentAmount + refillAmountLeft
+                    abilityManager.leftVessel.CurrentAmount + refillAmountLeft
                 );
-            abilityManager.leftVessel.Dropped = false;
         }
 
         if (abilityManager.rightVessel != null)
         {
             if (refillAmountRight == 0)
-                abilityManager.rightVessel.currentAmount = abilityManager.rightVessel.maxCapacity;
+                abilityManager.rightVessel.CurrentAmount = abilityManager.rightVessel.maxCapacity;
             else
-                abilityManager.rightVessel.currentAmount = Mathf.Min(
+                abilityManager.rightVessel.CurrentAmount = Mathf.Min(
                     abilityManager.rightVessel.maxCapacity,
-                    abilityManager.rightVessel.currentAmount + refillAmountRight
+                    abilityManager.rightVessel.CurrentAmount + refillAmountRight
                 );
-            abilityManager.rightVessel.Dropped = false;
         }
     }
 
