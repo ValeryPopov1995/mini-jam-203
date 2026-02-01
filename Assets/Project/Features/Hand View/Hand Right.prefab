@@ -12,6 +12,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand Right
       objectReference: {fileID: 0}
+    - target: {fileID: 1240769642030145271, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.325516
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240769642030145271, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240769642030145271, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879092207424641090, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.325516
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879092207424641090, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879092207424641090, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4740064203073704363, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -94,6 +118,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4740064203073704363, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168825895759149238, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.325516
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168825895759149238, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168825895759149238, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131741491956812757, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.325516
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131741491956812757, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131741491956812757, guid: 20fa1682c355b614bb54dea2b3a3fbe8, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

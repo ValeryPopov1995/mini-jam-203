@@ -8,22 +8,20 @@ namespace MiniJam203.Menu
     {
         public event System.Action OnStartedGame;
 
-        [SerializeField] private HandView.HandView _menuHandL;
-        [SerializeField] private HandView.HandView _menuHandR;
-        [SerializeField] private InputActionReference _startAction;
-        [SerializeField] private InputActionReference _quitAction;
+        [SerializeField] private Menu _menu;
 
         [SerializeField] private GameObject[] _disableOnStart;
         [SerializeField] private GameObject[] _enableOnStart;
 
         [SerializeField] private Player.PlayerHealth _player;
-        [SerializeField] private Camera _playerCam;
+        [SerializeField] private Player.SimpleInputHandler _input;
 
         private bool _isStartedGame = false;
 
         private void Awake()
         {
-            EnableMenu();
+            _menu.gameObject.SetActive(true);
+            _input.enabled = false;
         }
 
         public async void StartNewGame()
@@ -31,47 +29,27 @@ namespace MiniJam203.Menu
             if (!_isStartedGame)
             {
                 _isStartedGame=true;
-                DisableMenu();
-                await _menuHandR.Drop();
 
-                foreach(var item in _disableOnStart) item.SetActive(false);
+                _menu.gameObject.SetActive(false);
+                _input.enabled = true;
+
+                _player.OnDied += ShowDiedMenu;
+
+                foreach (var item in _disableOnStart) item.SetActive(false);
                 foreach(var item in _enableOnStart) item.SetActive(true);
 
                 OnStartedGame?.Invoke();
             }
         }
 
+        private void ShowDiedMenu(GameObject @object)
+        {
+            _player.OnDied -= ShowDiedMenu;
+        }
+
         public void Quit()
         {
-
-        }
-
-        private void EnableMenu()
-        {
-            _startAction.action.Enable();
-            _quitAction.action.Enable();
-
-            _startAction.action.performed += InvokeStartGame;
-            _quitAction.action.performed += InvokeQuit;
-        }
-
-        private void DisableMenu()
-        {
-            _startAction.action.performed -= InvokeStartGame;
-            _quitAction.action.performed -= InvokeQuit;
-
-            _startAction?.action.Disable();
-            _quitAction?.action.Disable();
-        }
-
-        private void InvokeQuit(InputAction.CallbackContext context)
-        {
-            Quit();
-        }
-
-        private void InvokeStartGame(InputAction.CallbackContext context)
-        {
-            StartNewGame();
+            Application.Quit();
         }
     }
 }
