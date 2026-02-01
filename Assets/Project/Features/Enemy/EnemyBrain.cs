@@ -93,11 +93,12 @@ public class EnemyBrain : MonoBehaviour
         }
         else
         {
-            Vector3 destination = hasLOS ? playerPos : lastSeenPosition;
-            movement.Chase(destination);
+            //Vector3 destination = hasLOS ? playerPos : lastSeenPosition;
+            movement.Chase(playerPos);
             attack.Stop();
             animator?.SetMoving(true);
-            Debug.DrawLine(transform.position + Vector3.up, destination + Vector3.up, Color.cyan);
+            //Debug.DrawLine(transform.position + Vector3.up, destination + Vector3.up, Color.cyan);
+            Debug.DrawLine(transform.position + Vector3.up, playerPos + Vector3.up, Color.cyan);
         }
     }
 
