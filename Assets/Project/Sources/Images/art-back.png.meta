@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -215,7 +215,7 @@ TextureImporter:
         width: 164
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -251,12 +251,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: art-back_16
+      name: water 1
       rect:
         serializedVersion: 2
         x: 2076
         y: 2558
-        width: 129
+        width: 39
         height: 74
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -273,7 +273,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: art-back_17
+      name: water 4
       rect:
         serializedVersion: 2
         x: 2205
@@ -295,7 +295,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: art-back_18
+      name: fire
       rect:
         serializedVersion: 2
         x: 2316
@@ -378,28 +378,6 @@ TextureImporter:
       bones: []
       spriteID: 7288ca18aafc48c41a9522b2456bcbc8
       internalID: -527518760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: art-back_26
-      rect:
-        serializedVersion: 2
-        x: 2095
-        y: 2365
-        width: 211
-        height: 175
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e49470d8f94567848891229e125e4aa7
-      internalID: -2045627624
       vertices: []
       indices: 
       edges: []
@@ -1271,7 +1249,7 @@ TextureImporter:
         width: 147
         height: 142
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1293,7 +1271,7 @@ TextureImporter:
         width: 143
         height: 201
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1302,6 +1280,72 @@ TextureImporter:
       bones: []
       spriteID: 96f948614e9d9cc4189c3199f3ad3c21
       internalID: -94884749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water 2
+      rect:
+        serializedVersion: 2
+        x: 2118
+        y: 2563
+        width: 39
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28a08325d66044b4394cb56f2dee09eb
+      internalID: 1459145066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water 3
+      rect:
+        serializedVersion: 2
+        x: 2161
+        y: 2555
+        width: 38
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d34daad90ad0f414193262022d154780
+      internalID: 542237622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water 5
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 2508
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02423c1407450db41ae61cf891eedc0b
+      internalID: 236922596
       vertices: []
       indices: 
       edges: []
@@ -1322,7 +1366,6 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      art-back_0: 2146626547
       art-back_1: 2121274385
       art-back_10: -468585096
       art-back_11: -1351246193
@@ -1330,9 +1373,6 @@ TextureImporter:
       art-back_13: 409686496
       art-back_14: 123649183
       art-back_15: -1109389876
-      art-back_16: 2144504835
-      art-back_17: 1012802224
-      art-back_18: -352373859
       art-back_19: 1377511437
       art-back_2: -23345547
       art-back_20: 883663138
@@ -1345,7 +1385,6 @@ TextureImporter:
       art-back_27: -397038140
       art-back_28: 451764271
       art-back_29: 182832275
-      art-back_3: -1782744350
       art-back_30: 1538631738
       art-back_31: 1921962027
       art-back_32: 581232063
@@ -1401,6 +1440,7 @@ TextureImporter:
       beam: 886965429
       cap bottle: 1889426108
       cap can: 296017526
+      fire: -352373859
       prop 1: 40196172
       prop 2: -167596395
       prop 3: -94884749
@@ -1412,6 +1452,11 @@ TextureImporter:
       wall 2: 215971979
       wall 3: -1891574739
       wall 4: 634382115
+      water 1: 2144504835
+      water 2: 2146626547
+      water 3: -1782744350
+      water 4: 1012802224
+      water 5: 236922596
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
