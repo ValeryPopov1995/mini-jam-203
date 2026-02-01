@@ -69,7 +69,7 @@ public class EnemyBrain : MonoBehaviour
         // Проверка видимости ТОЛЬКО для дальников
         if (configHolder.Config.attackType == EnemyConfig.EnemyAttackType.Ranged)
         {
-            hasLOS = attack.HasLineOfSightTo(target.Target);
+            hasLOS = attack.HasLineOfSight(target.Target);
         }
 
         // ===== Обновляем последнюю видимую позицию =====
