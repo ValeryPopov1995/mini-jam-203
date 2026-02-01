@@ -10,6 +10,8 @@ public class EnemyBrain : MonoBehaviour
     [SerializeField] EnemyConfig config; // назначьте конфиг в инспекторе
     [SerializeField] float hysteresis = 0.5f; // отступ для входа/выхода из атаки
 
+
+
     EnemyMovement movement;
     EnemyAttack attack;
     EnemyHealth health;
@@ -17,6 +19,8 @@ public class EnemyBrain : MonoBehaviour
     EnemyAnimator animator;
     EnemyConfigHolder configHolder;
 
+    // Последняя видимая позиция игрока
+    Vector3 lastSeenPosition;
     bool isAttacking;
 
     void Start()
@@ -52,17 +56,35 @@ public class EnemyBrain : MonoBehaviour
         if (health == null || health.IsDead) return;
         if (target == null || target.Target == null) return;
 
-        float distance = Vector3.Distance(transform.position, target.Target.position);
+        Vector3 playerPos = target.Target.position;
+
+        float distance = Vector3.Distance(transform.position, playerPos);
 
         // гистерезис — предотвращаем фликеринг
         float enterRange = attack.AttackRange;
         float exitRange = attack.AttackRange + hysteresis;
 
-        if (!isAttacking && distance <= enterRange)
+        bool hasLOS = true;
+
+        // Проверка видимости ТОЛЬКО для дальников
+        if (configHolder.Config.attackType == EnemyConfig.EnemyAttackType.Ranged)
+        {
+            hasLOS = attack.HasLineOfSightTo(target.Target);
+        }
+
+        // ===== Обновляем последнюю видимую позицию =====
+        if (hasLOS)
+        {
+            lastSeenPosition = playerPos;
+        }
+
+        // ===== ВХОД В АТАКУ =====
+        if (!isAttacking && distance <= enterRange && hasLOS)
             isAttacking = true;
-        else if (isAttacking && distance >= exitRange)
+        else if (isAttacking && (distance >= exitRange || !hasLOS))
             isAttacking = false;
 
+        // ===== ПОВЕДЕНИЕ =====
         if (isAttacking)
         {
             movement.Stop();
@@ -71,11 +93,15 @@ public class EnemyBrain : MonoBehaviour
         }
         else
         {
-            movement.Chase(target.Target.position);
+            Vector3 destination = hasLOS ? playerPos : lastSeenPosition;
+            movement.Chase(destination);
             attack.Stop();
             animator?.SetMoving(true);
+            Debug.DrawLine(transform.position + Vector3.up, destination + Vector3.up, Color.cyan);
         }
     }
+
+
 
     // вспомогательный для attack (поворачивает визуал)
     public void FaceVisualTowards(Transform t)

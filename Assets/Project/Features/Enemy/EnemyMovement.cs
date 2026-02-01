@@ -20,5 +20,5 @@ public class EnemyMovement : MonoBehaviour
         navAgent.Stop();
     }
 
-    public bool HasReachedDestination() => navAgent.HasReachedDestination();
+    //public bool HasReachedDestination() => navAgent.HasReachedDestination();
 }

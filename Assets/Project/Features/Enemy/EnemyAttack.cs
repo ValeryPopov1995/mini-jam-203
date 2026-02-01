@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 using Component = UnityEngine.Component;
 
 [RequireComponent(typeof(EnemyConfigHolder))]
@@ -7,6 +8,9 @@ public class EnemyAttack : MonoBehaviour
 {
     EnemyConfig config;
     float lastAttackTime;
+    [SerializeField] LayerMask lineOfSightMask = 6;
+    [SerializeField] float eyeHeight = 1f;
+
 
     // For melee overlap check
     const int PLAYER_LAYER = 0; // если у вас игрок в отдельном слое Ч замените или используйте LayerMask
@@ -35,6 +39,13 @@ public class EnemyAttack : MonoBehaviour
 
         FaceTarget(target);
 
+        // дл€ дальников Ч провер€ем линию видимости
+        if (config.attackType == EnemyConfig.EnemyAttackType.Ranged)
+        {
+            if (!HasLineOfSight(target))
+                return; // Ќ≈ атакуем, если есть стена
+        }
+
         if (Time.time >= lastAttackTime + config.attackCooldown)
         {
             PerformAttack(target);
@@ -59,6 +70,29 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    //если нет LOS Ч враг должен продолжать движение
+    public bool HasLineOfSightTo(Transform target)
+    {
+        return HasLineOfSight(target);
+    }
+
+    public bool HasLineOfSight(Transform target)
+    {
+        Vector3 origin = transform.position + Vector3.up * eyeHeight;
+        Vector3 aimPoint = GetAimPoint(target);
+
+        Vector3 dir = aimPoint - origin;
+        float dist = dir.magnitude;
+
+        if (Physics.Raycast(origin, dir.normalized, out RaycastHit hit, dist, lineOfSightMask))
+        {
+            // если первым попали не в цель Ч значит есть преп€тствие
+            return false;
+        }
+
+        return true;
+    }
+
     void DoMeleeAttack()
     {
         // ѕроста€ реализаци€: overlap sphere и наносим урон первому IDamageable
@@ -72,48 +106,56 @@ public class EnemyAttack : MonoBehaviour
                 dmg.TakeDamage(config.damage, gameObject);
                 break;
             }
-            // пробуем PlayerHealth как запасной вариант (если в проекте нет интерфейса)
-           // var ph = col.GetComponent<UnityEngine.Component>() as Component;
         }
 
         // ¬ызов анимации/эвентов
-        var animator = GetComponent<EnemyAnimator>();
-        animator?.PlayAttack();
+        GetComponent<EnemyAnimator>()?.PlayAttack();
+    }
+
+    Vector3 GetAimPoint(Transform target)
+    {
+        if (target.TryGetComponent<CapsuleCollider>(out var capsule))
+            return capsule.bounds.center;
+
+        if (target.TryGetComponent<Collider>(out var col))
+            return col.bounds.center;
+
+        return target.position;
     }
 
     void DoRangedAttack(Transform target)
     {
+
+        Vector3 origin = transform.position + Vector3.up * eyeHeight;
+        Vector3 aimPoint = GetAimPoint(target);
+
+
         if (config.projectilePrefab == null)
         {
-            // проста€ рейкаст-имитаци€
-            Vector3 dir = (target.position - transform.position).normalized;
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position + Vector3.up * 1.0f, dir, out hit, AttackRange))
+            Vector3 dir = (aimPoint - origin).normalized;
+
+            if (Physics.Raycast(origin, dir, out RaycastHit hit, AttackRange))
             {
-                var dmgable = hit.collider.GetComponent<IDamageable>();
-                if (dmgable != null)
+                if (hit.collider.TryGetComponent<IDamageable>(out var dmg))
                 {
-                    dmgable.TakeDamage(config.damage, gameObject);
+                    dmg.TakeDamage(config.damage, gameObject);
                 }
             }
         }
         else
         {
-            // spawn projectile
-            var prefab = config.projectilePrefab;
-            var spawnPos = transform.position + (transform.forward * 1.0f) + Vector3.up * 1.1f;
-            var proj = Instantiate(prefab, spawnPos, transform.rotation);
+            Vector3 spawnPos = transform.position + Vector3.up * eyeHeight;
+            var proj = Instantiate(config.projectilePrefab, spawnPos, Quaternion.identity);
+
             if (proj != null)
             {
-                Vector3 targetCenter = target.position + Vector3.up * 1.0f;
-                proj.transform.LookAt(targetCenter);
-                proj.Init(config.damage, config.projectileSpeed, gameObject);
 
+                proj.transform.LookAt(aimPoint);
+                proj.Init(config.damage, config.projectileSpeed, gameObject);
             }
         }
 
-        var animator = GetComponent<EnemyAnimator>();
-        animator?.PlayAttack();
+        GetComponent<EnemyAnimator>()?.PlayAttack();
     }
 
     void FaceTarget(Transform target)
@@ -129,5 +171,30 @@ public class EnemyAttack : MonoBehaviour
         if (config == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position + transform.forward * (AttackRange * 0.5f), AttackRange);
+    }
+
+    void OnDrawGizmos()
+    {
+        if (!Application.isPlaying) return;
+
+        var enemyTarget = GetComponent<EnemyTarget>();
+        if (enemyTarget == null || enemyTarget.Target == null)
+            return;
+
+        Vector3 origin = transform.position + Vector3.up * eyeHeight;
+        Vector3 aimPoint = GetAimPoint(enemyTarget.Target);
+
+        Vector3 dir = aimPoint - origin;
+        float dist = dir.magnitude;
+
+        bool blocked = Physics.Raycast(
+            origin,
+            dir.normalized,
+            dist,
+            lineOfSightMask
+        );
+
+        Gizmos.color = blocked ? Color.red : Color.green;
+        Gizmos.DrawLine(origin, aimPoint);
     }
 }

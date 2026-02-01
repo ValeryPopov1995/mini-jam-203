@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 3120126496519136685}
   - component: {fileID: 7781640170401418960}
   m_Layer: 0
-  m_Name: enemyRanged
+  m_Name: EnemyRanged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,6 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862db93b853231d44b4f851096ec6d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
+  lineOfSightMask:
+    serializedVersion: 2
+    m_Bits: 64
+  eyeHeight: 1.3
 --- !u!114 &6030714600389387460
 MonoBehaviour:
   m_ObjectHideFlags: 0
