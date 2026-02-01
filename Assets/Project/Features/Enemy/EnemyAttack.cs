@@ -1,24 +1,23 @@
-using System.ComponentModel;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using Component = UnityEngine.Component;
 
 [RequireComponent(typeof(EnemyConfigHolder))]
 public class EnemyAttack : MonoBehaviour
 {
-    EnemyConfig config;
-    float lastAttackTime;
-    [SerializeField] LayerMask lineOfSightMask = 6;
+    [Header("Attack Settings")]
+    [SerializeField] LayerMask lineOfSightMask = ~0;  // Для проверки LOS
     [SerializeField] float eyeHeight = 1f;
 
+    [Tooltip("Выберите слои объектов, которым враг может наносить урон. Не включайте слой Enemy, чтобы враги не атаковали друг друга.")]
+    [SerializeField] public LayerMask damageMask = ~0;       // Маска урона через инспектор
 
-    // For melee overlap check
-    const int PLAYER_LAYER = 0; // если у вас игрок в отдельном слое — замените или используйте LayerMask
-    LayerMask damageMask = ~0; // по умолчанию — все
+    EnemyConfig config;
+    float lastAttackTime;
 
     void Awake()
     {
-        // config через holder (чтобы компонент можно было добавлять без последовательности)
+        // Получаем конфиг через holder
         config = GetComponent<EnemyConfigHolder>().Config;
     }
 
@@ -28,6 +27,15 @@ public class EnemyAttack : MonoBehaviour
     {
         config = cfg;
     }
+
+    /// <summary>
+    /// Проверяет, есть ли линия видимости до указанной цели
+    /// </summary>
+    public bool HasLineOfSightTo(Transform target)
+    {
+        return HasLineOfSight(target);
+    }
+
     public bool CanAttack(float distanceToTarget)
     {
         return distanceToTarget <= AttackRange;
@@ -39,12 +47,9 @@ public class EnemyAttack : MonoBehaviour
 
         FaceTarget(target);
 
-        // для дальников — проверяем линию видимости
-        if (config.attackType == EnemyConfig.EnemyAttackType.Ranged)
-        {
-            if (!HasLineOfSight(target))
-                return; // НЕ атакуем, если есть стена
-        }
+        // Проверка линии видимости для дальников
+        if (config.attackType == EnemyConfig.EnemyAttackType.Ranged && !HasLineOfSight(target))
+            return;
 
         if (Time.time >= lastAttackTime + config.attackCooldown)
         {
@@ -53,124 +58,107 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    public void Stop()
-    {
-        // можно сбросить триггеры анимаций
-    }
-
     void PerformAttack(Transform target)
     {
         if (config.attackType == EnemyConfig.EnemyAttackType.Melee)
-        {
             DoMeleeAttack();
-        }
         else if (config.attackType == EnemyConfig.EnemyAttackType.Ranged)
-        {
             DoRangedAttack(target);
-        }
-    }
-
-    //если нет LOS — враг должен продолжать движение
-    public bool HasLineOfSightTo(Transform target)
-    {
-        return HasLineOfSight(target);
-    }
-
-    public bool HasLineOfSight(Transform target)
-    {
-        Vector3 origin = transform.position + Vector3.up * eyeHeight;
-        Vector3 aimPoint = GetAimPoint(target);
-
-        Vector3 dir = aimPoint - origin;
-        float dist = dir.magnitude;
-
-        if (Physics.Raycast(origin, dir.normalized, out RaycastHit hit, dist, lineOfSightMask))
-        {
-            // если первым попали не в цель — значит есть препятствие
-            return false;
-        }
-
-        return true;
     }
 
     void DoMeleeAttack()
     {
-        // Простая реализация: overlap sphere и наносим урон первому IDamageable
-        Collider[] hits = Physics.OverlapSphere(transform.position + transform.forward * (AttackRange * 0.5f), AttackRange, damageMask);
+        Vector3 attackCenter = transform.position + transform.forward * (AttackRange * 0.5f);
+        Collider[] hits = Physics.OverlapSphere(attackCenter, AttackRange, damageMask);
+
         foreach (var col in hits)
         {
-            if (col.transform == transform) continue;
             var dmg = col.GetComponent<IDamageable>();
             if (dmg != null)
             {
                 dmg.TakeDamage(config.damage, gameObject);
-                break;
+                break; // урон только одному объекту
             }
         }
 
-        // Вызов анимации/эвентов
+        GetComponent<EnemyAnimator>()?.PlayAttack();
+    }
+
+    void DoRangedAttack(Transform target)
+    {
+        // Игнорируем цели с EnemyAttack
+        if (target.GetComponent<EnemyAttack>() != null) return;
+
+        Vector3 origin = transform.position + Vector3.up * eyeHeight;
+        Vector3 aimPoint = GetAimPoint(target);
+
+        if (config.projectilePrefab == null)
+        {
+            Vector3 dir = (aimPoint - origin).normalized;
+            if (Physics.Raycast(origin, dir, out RaycastHit hit, AttackRange, damageMask))
+            {
+                if (hit.collider.TryGetComponent<IDamageable>(out var dmg))
+                    dmg.TakeDamage(config.damage, gameObject);
+            }
+        }
+        else
+        {
+            var proj = Instantiate(config.projectilePrefab, origin, Quaternion.identity);
+            proj.transform.LookAt(aimPoint);
+            proj.Init(config.damage, config.projectileSpeed, gameObject);
+        }
+
         GetComponent<EnemyAnimator>()?.PlayAttack();
     }
 
     Vector3 GetAimPoint(Transform target)
     {
-        if (target.TryGetComponent<CapsuleCollider>(out var capsule))
-            return capsule.bounds.center;
-
         if (target.TryGetComponent<Collider>(out var col))
             return col.bounds.center;
-
         return target.position;
-    }
-
-    void DoRangedAttack(Transform target)
-    {
-
-        Vector3 origin = transform.position + Vector3.up * eyeHeight;
-        Vector3 aimPoint = GetAimPoint(target);
-
-
-        if (config.projectilePrefab == null)
-        {
-            Vector3 dir = (aimPoint - origin).normalized;
-
-            if (Physics.Raycast(origin, dir, out RaycastHit hit, AttackRange))
-            {
-                if (hit.collider.TryGetComponent<IDamageable>(out var dmg))
-                {
-                    dmg.TakeDamage(config.damage, gameObject);
-                }
-            }
-        }
-        else
-        {
-            Vector3 spawnPos = transform.position + Vector3.up * eyeHeight;
-            var proj = Instantiate(config.projectilePrefab, spawnPos, Quaternion.identity);
-
-            if (proj != null)
-            {
-
-                proj.transform.LookAt(aimPoint);
-                proj.Init(config.damage, config.projectileSpeed, gameObject);
-            }
-        }
-
-        GetComponent<EnemyAnimator>()?.PlayAttack();
     }
 
     void FaceTarget(Transform target)
     {
-        // Поворачиваем визуальную часть через EnemyAnimator/Visual
         var brain = GetComponent<EnemyBrain>();
         if (brain != null)
             brain.FaceVisualTowards(target);
     }
 
+    bool HasLineOfSight(Transform target)
+    {
+        Vector3 origin = transform.position + Vector3.up * eyeHeight;
+        Vector3 aimPoint = GetAimPoint(target);
+        Vector3 dir = aimPoint - origin;
+        float dist = dir.magnitude;
+
+        if (Physics.Raycast(origin, dir.normalized, out RaycastHit hit, dist, lineOfSightMask))
+        {
+            return false; // что-то блокирует LOS
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Прекращает текущую атаку (сброс анимаций и таймера)
+    /// </summary>
+    public void Stop()
+    {
+        //GetComponent<EnemyAnimator>()?.StopAttack();
+        lastAttackTime = 0;
+    }
+
+    // ------------------ Gizmos ------------------
+
     void OnDrawGizmosSelected()
     {
         if (config == null) return;
+
+        // Красная сфера — зона melee атаки
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + transform.forward * (AttackRange * 0.5f), AttackRange);
+        Vector3 attackCenter = transform.position + transform.forward * (AttackRange * 0.5f);
+        Gizmos.DrawWireSphere(attackCenter, AttackRange);
     }
 
     void OnDrawGizmos()
@@ -178,8 +166,7 @@ public class EnemyAttack : MonoBehaviour
         if (!Application.isPlaying) return;
 
         var enemyTarget = GetComponent<EnemyTarget>();
-        if (enemyTarget == null || enemyTarget.Target == null)
-            return;
+        if (enemyTarget == null || enemyTarget.Target == null) return;
 
         Vector3 origin = transform.position + Vector3.up * eyeHeight;
         Vector3 aimPoint = GetAimPoint(enemyTarget.Target);
@@ -187,14 +174,30 @@ public class EnemyAttack : MonoBehaviour
         Vector3 dir = aimPoint - origin;
         float dist = dir.magnitude;
 
-        bool blocked = Physics.Raycast(
-            origin,
-            dir.normalized,
-            dist,
-            lineOfSightMask
-        );
+        bool blocked = Physics.Raycast(origin, dir.normalized, dist, lineOfSightMask);
 
-        Gizmos.color = blocked ? Color.red : Color.green;
+        // Проверяем, есть ли попадание по damageMask
+        bool hitsDamageable = Physics.Raycast(origin, dir.normalized, out RaycastHit hit2, dist, damageMask);
+
+        if (hitsDamageable)
+            Gizmos.color = Color.green;   // атака попадёт по цели (игрок)
+        else if (blocked)
+            Gizmos.color = Color.red;     // линия блокируется
+        else
+            Gizmos.color = Color.yellow;  // свободная линия, но не цель
+
         Gizmos.DrawLine(origin, aimPoint);
+
+        // Дополнительно для melee: линии к потенциальным целям
+        if (config.attackType == EnemyConfig.EnemyAttackType.Melee)
+        {
+            Collider[] hits = Physics.OverlapSphere(transform.position + transform.forward * (AttackRange * 0.5f), AttackRange, damageMask);
+            foreach (var col in hits)
+            {
+                if (col.transform == transform) continue;
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawLine(transform.position + Vector3.up * 0.5f, col.transform.position);
+            }
+        }
     }
 }

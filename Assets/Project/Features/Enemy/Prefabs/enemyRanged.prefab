@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8020484538219287722}
   - component: {fileID: 3120126496519136685}
   - component: {fileID: 7781640170401418960}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyRanged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,6 +116,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   eyeHeight: 1.3
+  damageMask:
+    serializedVersion: 2
+    m_Bits: 119
 --- !u!114 &6030714600389387460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +181,7 @@ GameObject:
   - component: {fileID: 8602417663849350227}
   - component: {fileID: 6309644060048906917}
   - component: {fileID: 4768717178984418504}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
