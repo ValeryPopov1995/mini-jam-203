@@ -1,3 +1,4 @@
+using MiniJam203.Player;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -7,8 +8,8 @@ namespace Project.Features.Abilities
     public class AbilityManager : MonoBehaviour
     {
         [Header("Potions")]
-        [SerializeField] private Vessel leftVessel;
-        [SerializeField] private Vessel rightVessel;
+        public Vessel leftVessel;
+        public Vessel rightVessel;
 
         [SerializeField] private InputAction leftGulp;
         [SerializeField] private InputAction rightGulp;
@@ -19,12 +20,13 @@ namespace Project.Features.Abilities
 
         [SerializeField] private int maxTotalGulps = 3;
         public UnityEvent onOverload;
-
+        public float overloadDamage;
         private int leftCount = 0;
         private int rightCount = 0;
         private float drinkingSartTime;
         private bool isDrinkingWindowActive = false;
 
+        private PlayerHealth _player;
         private void OnEnable()
         {
             leftGulp?.Enable();
@@ -32,6 +34,9 @@ namespace Project.Features.Abilities
 
             leftGulp.performed += OnLeftGulp;
             rightGulp.performed += OnRightGulp;
+
+            _player = FindAnyObjectByType<PlayerHealth>();
+            onOverload.AddListener(() => _player.TakeDamage(overloadDamage, gameObject));
         }
 
         private void OnDisable()
@@ -56,7 +61,6 @@ namespace Project.Features.Abilities
             if (leftVessel.Dropped) return;
             if (!leftVessel.CanDrink)
             {
-                Debug.LogWarning("Left vessel is empty! Dropping...");
                 leftVessel.EmptyAndDrop();
                 return;
             }
@@ -71,7 +75,6 @@ namespace Project.Features.Abilities
             if (rightVessel.Dropped) return;
             if (!rightVessel.CanDrink)
             {
-                Debug.LogWarning("Right vessel is empty! Dropping...");
                 rightVessel.EmptyAndDrop();
                 return;
             }
