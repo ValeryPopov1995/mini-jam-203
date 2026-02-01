@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace MiniJam203.Player
 {
-    // Интерфейс, который должен реализовывать любой объект, получающий урон.
     public class PlayerHealth : MonoBehaviour, IDamageable
     {
         [Header("Health")]
@@ -16,7 +15,7 @@ namespace MiniJam203.Player
 
         private float currentHealth;
         private bool isDead;
-        private bool isInvulnerable;
+        [SerializeField]private bool isInvulnerable;
         private Coroutine invulCoroutine;
 
         private void Awake()
@@ -27,7 +26,6 @@ namespace MiniJam203.Player
             OnHealthChanged?.Invoke(currentHealth);
         }
 
-        // Реализация интерфейса
         public void TakeDamage(float damage, GameObject attacker)
         {
             if (isDead) return;
@@ -63,9 +61,6 @@ namespace MiniJam203.Player
         {
             if (isDead) return;
             isDead = true;
-
-            // Можно добавить отключение управления, проигрывание анимации и т.д.
-            Debug.Log($"{gameObject.name} died. Killer: {(attacker != null ? attacker.name : "Unknown")}");
 
             OnDied?.Invoke(attacker);
         }

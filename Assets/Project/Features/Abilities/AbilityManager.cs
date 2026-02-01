@@ -4,16 +4,16 @@ using UnityEngine.InputSystem;
 
 namespace Project.Features.Abilities
 {
-    public class GestureAbilityDetector : MonoBehaviour
+    public class AbilityManager : MonoBehaviour
     {
         [Header("Potions")]
         [SerializeField] private Vessel leftVessel;
         [SerializeField] private Vessel rightVessel;
         
-        [SerializeField] private InputAction leftGulp;   // Взмах левой рукой
-        [SerializeField] private InputAction rightGulp;  // Взмах правой рукой
+        [SerializeField] private InputAction leftGulp;   
+        [SerializeField] private InputAction rightGulp;  
     
-        [SerializeField] private float drinkWindow = .5f;      // Время сбора взмахов
+        [SerializeField] private float drinkWindow = .5f;      
     
         [SerializeField] private AbilityMixRatio[] abilities;
     
@@ -96,7 +96,6 @@ namespace Project.Features.Abilities
         
             Debug.Log($"Mix complete: L={leftCount}, R={rightCount}, Total={totalSwings}");
         
-            // Проверяем оверлоад
             if (totalSwings > maxTotalGulps)
             {
                 Debug.LogWarning("💥 OVERLOAD!");
@@ -105,7 +104,6 @@ namespace Project.Features.Abilities
                 return;
             }
         
-            // Ищем подходящую абилку
             foreach (var config in abilities)
             {
                 if (config.leftCount == leftCount && config.rightCount == rightCount)

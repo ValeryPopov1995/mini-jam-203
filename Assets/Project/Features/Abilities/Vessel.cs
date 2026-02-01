@@ -14,7 +14,6 @@ namespace Project.Features.Abilities
         {
             if (!CanDrink) return;
             currentAmount--;
-            Debug.Log($"Sipped from vessel. Remaining: {currentAmount}/{maxCapacity}");
         }
         
         public void EmptyAndDrop()

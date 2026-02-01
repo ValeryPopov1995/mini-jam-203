@@ -6,7 +6,7 @@ namespace Project.Features.Abilities
     {
         public override void Activate()
         {
-            Debug.Log($"<color=yellow>{abilityName}</color>: activated! 🌀");;
+            Debug.Log($"<color=yellow>{this}</color>: activated! 🌀");;
         }
     }
 }
