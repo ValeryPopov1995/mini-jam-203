@@ -11,7 +11,7 @@ namespace Project.Features.Abilities
             get => _currentAmount;
             set
             {
-                if (_currentAmount == 0 && value > 0) _ = _hand.Pick("can", Color);
+                if (value > _currentAmount) _ = _hand.Pick("can", Color);
                 else if (_currentAmount > value) _ = _hand.Drink();
                 else if (value == 0) _ = _hand.Drop();
 
